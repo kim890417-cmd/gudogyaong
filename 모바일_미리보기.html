@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>구독야옹 (9dogyaong) - 모바일 앱 실시간 미리보기</title>
+  
+  <!-- OpenGraph Meta Tags for KakaoTalk & Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="📱 구독야옹 - 모바일 앱 실시간 미리보기" />
+  <meta property="og:description" content="실제 스마트폰에 설치된 앱처럼 하단 네비게이션바, 품종 백과사전, 맞춤 구독을 직접 조작해보세요." />
+  <meta property="og:image" content="https://gudogyaong.pages.dev/assets/images/hero-kitchen.jpg" />
+  <meta property="og:url" content="https://gudogyaong.pages.dev/preview.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800;900&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(ellipse at 50% 15%, #1e1e24 0%, #121316 65%, #0a0a0c 100%);
+      color: #f1f5f9;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 14px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Warm Glow Backgrounds */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -15%;
+      left: 12%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(224, 109, 59, 0.16) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -10%;
+      right: 15%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(42, 75, 61, 0.22) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Header */
+    .preview-header {
+      text-align: center;
+      margin-bottom: 18px;
+      z-index: 1;
+      max-width: 680px;
+    }
+    .preview-header .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(224, 109, 59, 0.16);
+      border: 1px solid rgba(224, 109, 59, 0.45);
+      color: #f97316;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .preview-header h1 {
+      font-size: 1.38rem;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-shadow: 0 4px 20px rgba(224, 109, 59, 0.35);
+    }
+    .preview-header h1 span.brand {
+      color: #E06D3B;
+    }
+    .preview-header p {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    /* Device Mockup Wrapper */
+    .phone-container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1000px;
+    }
+
+    /* Realistic Smartphone Frame */
+    .phone-mockup {
+      width: 412px;
+      height: 870px;
+      max-height: 82vh;
+      background: #0f1115;
+      border-radius: 48px;
+      padding: 12px;
+      box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.88),
+        0 0 0 3px #272a33,
+        0 0 0 5px rgba(224, 109, 59, 0.35),
+        0 0 60px rgba(224, 109, 59, 0.18);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1), height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Side hardware buttons */
+    .phone-mockup::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 130px;
+      width: 3px;
+      height: 55px;
+      background: #3b3f4d;
+      border-radius: 3px 0 0 3px;
+      box-shadow: 0 80px 0 #3b3f4d; /* volume down */
+    }
+    .phone-mockup::after {
+      content: '';
+      position: absolute;
+      right: -5px;
+      top: 160px;
+      width: 3px;
+      height: 70px;
+      background: #3b3f4d;
+      border-radius: 0 3px 3px 0; /* power button */
+    }
+
+    /* Dynamic Island Notch */
+    .dynamic-island {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 105px;
+      height: 22px;
+      background: #000000;
+      border-radius: 14px;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+    }
+    .island-lens {
+      width: 9px;
+      height: 9px;
+      background: #1a1e28;
+      border-radius: 50%;
+      border: 1.5px solid #0d0f14;
+    }
+    .island-sensor {
+      width: 7px;
+      height: 7px;
+      background: #11141c;
+      border-radius: 50%;
+    }
+    .island-speaker {
+      width: 34px;
+      height: 3px;
+      background: #252936;
+      border-radius: 2px;
+    }
+
+    /* Phone Screen Container */
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 38px;
+      overflow: hidden;
+      background: #FAF7F2;
+      position: relative;
+      box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.4);
+    }
+    .phone-screen iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      background: #FAF7F2;
+    }
+
+    /* Floating Status Bar Mock (Time & Battery) */
+    .mobile-status-bar {
+      position: absolute;
+      top: 6px;
+      left: 24px;
+      right: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #23201D;
+      z-index: 25;
+      pointer-events: none;
+      letter-spacing: -0.01em;
+    }
+    .status-icons {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    /* Controls & Footer */
+    .preview-footer {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+      z-index: 1;
+      max-width: 650px;
+    }
+    .btn-action {
+      background: rgba(30, 34, 45, 0.85);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(8px);
+      user-select: none;
+    }
+    .btn-action:hover {
+      background: rgba(224, 109, 59, 0.22);
+      border-color: rgba(224, 109, 59, 0.6);
+      color: #ff9d6b;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(224, 109, 59, 0.25);
+    }
+    .btn-action.active-device {
+      background: linear-gradient(135deg, rgba(224, 109, 59, 0.35), rgba(42, 75, 61, 0.45));
+      border-color: #E06D3B;
+      color: #ffb58e;
+      box-shadow: 0 0 18px rgba(224, 109, 59, 0.4);
+    }
+
+    /* Usage Tip */
+    .usage-tip {
+      margin-top: 14px;
+      font-size: 0.78rem;
+      color: #94a3b8;
+      text-align: center;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      max-width: 580px;
+      line-height: 1.4;
+    }
+
+    /* Toast Notification */
+    #previewToast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(50px);
+      opacity: 0;
+      background: #23201D;
+      color: #FAF7F2;
+      border: 1px solid rgba(224, 109, 59, 0.5);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 100;
+      pointer-events: none;
+    }
+    #previewToast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Title & Badge -->
+  <div class="preview-header">
+    <div class="badge">🐾 9DOGYAONG MOBILE APP SIMULATOR</div>
+    <h1>📱 <span class="brand">구독야옹</span> 모바일 앱 실시간 미리보기</h1>
+    <p>실제 스마트폰에 설치했을 때 보이는 화면과 100% 동일하게 작동합니다.<br>
+    하단 네비게이션바(홈, 품종백과, 맞춤구독, 매거진, 관심목록)와 터치 기능을 직접 체험해보세요.</p>
+  </div>
+
+  <!-- Smartphone Mockup Device Frame -->
+  <div class="phone-container">
+    <div class="phone-mockup" id="phoneMockup">
+      
+      <!-- Punch Hole Camera & Dynamic Island -->
+      <div class="dynamic-island">
+        <div class="island-lens"></div>
+        <div class="island-speaker"></div>
+        <div class="island-sensor"></div>
+      </div>
+
+      <!-- Smartphone Screen with Live App -->
+      <div class="phone-screen">
+        <div class="mobile-status-bar">
+          <span id="statusBarTime">09:41</span>
+          <div class="status-icons">
+            <span>5G</span>
+            <span>100% 🔋</span>
+          </div>
+        </div>
+        <iframe src="index.html" id="appFrame" title="구독야옹 모바일 앱 실시간 화면"></iframe>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Control Bar -->
+  <div class="preview-footer">
+    <button type="button" class="btn-action active-device" onclick="setDeviceSize(412, 870, this)">📱 갤럭시 S24 (412×870)</button>
+    <button type="button" class="btn-action" onclick="setDeviceSize(393, 852, this)">🍏 아이폰 15 Pro (393×852)</button>
+    <button type="button" class="btn-action" onclick="setDeviceSize(360, 780, this)">📱 컴팩트 (360×780)</button>
+    <button type="button" class="btn-action" onclick="reloadFrame()">🔄 새로고침</button>
+    <button type="button" class="btn-action" onclick="copyShareLink()">📋 카톡 공유링크 복사</button>
+    <a href="index.html" target="_blank" class="btn-action">🖥️ 브라우저 전체화면</a>
+  </div>
+
+  <!-- Helpful Tip -->
+  <div class="usage-tip">
+    <span>💡</span>
+    <span>스마트폰 화면 안을 마우스로 클릭 및 스크롤하여 22종 품종백과 검색, 모바일 하단바 이동, 맞춤구독 신청 등을 자유롭게 테스트할 수 있습니다.</span>
+  </div>
+
+  <!-- Toast Element -->
+  <div id="previewToast">
+    <span>✅</span>
+    <span id="toastMsg">링크가 클립보드에 복사되었습니다!</span>
+  </div>
+
+  <script>
+    // Live Clock for Status Bar
+    function updateClock() {
+      const now = new Date();
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      const timeStr = String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0');
+      const el = document.getElementById('statusBarTime');
+      if (el) el.textContent = timeStr;
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
+
+    // Refresh Frame
+    function reloadFrame() {
+      const frame = document.getElementById('appFrame');
+      if (frame) {
+        frame.contentWindow.location.reload();
+        showToast('화면을 새로고침했습니다.');
+      }
+    }
+
+    // Switch Device Size
+    function setDeviceSize(w, h, btn) {
+      const mockup = document.getElementById('phoneMockup');
+      mockup.style.width = w + 'px';
+      mockup.style.height = h + 'px';
+      
+      document.querySelectorAll('.preview-footer button').forEach(b => {
+        b.classList.remove('active-device');
+      });
+      btn.classList.add('active-device');
+      showToast(btn.textContent.trim() + ' 화면으로 전환되었습니다.');
+    }
+
+    // Copy Share Link for KakaoTalk
+    function copyShareLink() {
+      const shareUrl = window.location.href;
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        showToast('카톡 공유용 링크가 복사되었습니다!');
+      }).catch(() => {
+        // Fallback
+        const dummy = document.createElement('textarea');
+        dummy.value = shareUrl;
+        document.body.appendChild(dummy);
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+        showToast('카톡 공유용 링크가 복사되었습니다!');
+      });
+    }
+
+    // Toast Function
+    function showToast(msg) {
+      const toast = document.getElementById('previewToast');
+      const toastMsg = document.getElementById('toastMsg');
+      if (toast && toastMsg) {
+        toastMsg.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2200);
+      }
+    }
+  </script>
+</body>
+</html>
