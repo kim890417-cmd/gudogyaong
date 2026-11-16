@@ -170,6 +170,7 @@
         <a href="#story" class="hover:text-terracotta transition-colors">집사의 원칙</a>
         <a href="#process" class="hover:text-terracotta transition-colors">수제 조리과정</a>
         <a href="#video" class="hover:text-terracotta transition-colors">조리 영상</a>
+        <a href="#encyclopedia" class="hover:text-terracotta transition-colors">품종 백과</a>
         <a href="#plans" class="hover:text-terracotta transition-colors">맞춤 구독 플랜</a>
         <a href="#blog" class="hover:text-terracotta transition-colors">냥이 영양 칼럼</a>
         <a href="#curation" class="hover:text-terracotta transition-colors">집사 추천템</a>
@@ -200,6 +201,7 @@
       <a href="#story" class="block py-1.5 hover:text-terracotta">집사의 원칙</a>
       <a href="#process" class="block py-1.5 hover:text-terracotta">수제 조리과정</a>
       <a href="#video" class="block py-1.5 hover:text-terracotta">조리 영상</a>
+      <a href="#encyclopedia" class="block py-1.5 hover:text-terracotta">품종 백과</a>
       <a href="#plans" class="block py-1.5 hover:text-terracotta">맞춤 구독 플랜</a>
       <a href="#blog" class="block py-1.5 hover:text-terracotta">냥이 영양 칼럼</a>
       <a href="#curation" class="block py-1.5 hover:text-terracotta">집사 추천템</a>
@@ -471,6 +473,69 @@
       </div>
     </section>
 
+
+    <!-- Pet Breed Encyclopedia Section (강아지 & 고양이 품종 백과사전 및 맞춤 영양 가이드) -->
+    <section id="encyclopedia" class="bg-gradient-to-b from-cream via-[#F5EFE6] to-cream border-t border-stone-200/80 py-18">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-5 mb-8">
+          <div>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-terracottaLight text-terracottaDark">
+              <span>🐾</span> Pet Breed & Nutrition Guide
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-black mt-2 text-charcoal">강아지 · 고양이 품종 백과 & 맞춤 영양 가이드</h2>
+            <p class="text-sm sm:text-base text-muted mt-1.5 max-w-2xl leading-relaxed">
+              9마리 대가족을 반려하며 체득한 품종별 타고난 기질, 주의해야 할 질환, 그리고 어떤 음식이 가장 몸에 맞는지 맞춤 수제 원물 식단을 한눈에 확인하세요.
+            </p>
+          </div>
+
+          <!-- Filter & Search Controls -->
+          <div class="flex flex-col sm:flex-row gap-2.5 w-full lg:w-auto">
+            <!-- Breed Type Filter Buttons -->
+            <div class="inline-flex p-1 rounded-2xl bg-white border border-stone-200 shadow-sm shrink-0">
+              <button type="button" data-breed-type="all" class="breed-type-btn px-3.5 py-2 rounded-xl text-xs font-black bg-charcoal text-white transition">전체 (22종)</button>
+              <button type="button" data-breed-type="cat" class="breed-type-btn px-3.5 py-2 rounded-xl text-xs font-bold text-muted hover:text-charcoal transition">🐱 고양이 (12종)</button>
+              <button type="button" data-breed-type="dog" class="breed-type-btn px-3.5 py-2 rounded-xl text-xs font-bold text-muted hover:text-charcoal transition">🐶 강아지 (10종)</button>
+            </div>
+
+            <!-- Search Input -->
+            <div class="relative flex-1 sm:w-60">
+              <input id="breedSearchInput" type="text" placeholder="품종, 고민(슬개골,신장), 음식 검색..." class="w-full pl-8 pr-3 py-2 text-xs sm:text-sm rounded-xl border border-stone-300 bg-white focus:outline-none focus:border-terracotta transition shadow-sm" />
+              <span class="absolute left-2.5 top-2.5 text-muted text-xs">🔍</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Breed Cards Grid (Rendered by JS) -->
+        <div id="breedGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Rendered by JavaScript -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="breedEmptyState" class="hidden text-center py-16 bg-white rounded-3xl border border-dashed border-stone-300 p-8">
+          <p class="text-3xl mb-2">🔍</p>
+          <p class="text-base font-extrabold text-charcoal">검색된 품종 정보가 없습니다</p>
+          <p class="text-xs text-muted mt-1">다른 검색어를 입력하시거나 전체 목록 버튼을 눌러보세요.</p>
+          <button type="button" id="breedResetSearchBtn" class="mt-4 px-4 py-2 rounded-xl bg-sand text-xs font-bold text-charcoal hover:bg-stone-200 transition">전체 22종 보기</button>
+        </div>
+
+        <!-- Bottom Guidance Banner -->
+        <div class="mt-10 p-5 sm:p-6 bg-white rounded-3xl border border-stone-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3.5">
+            <div class="w-12 h-12 rounded-2xl bg-terracottaLight text-terracotta flex items-center justify-center text-2xl shrink-0">
+              💡
+            </div>
+            <div>
+              <h3 class="text-sm sm:text-base font-black text-charcoal">우리아이 품종이 목록에 없거나 믹스견·믹스묘인가요?</h3>
+              <p class="text-xs text-muted mt-0.5">구독 신청 시 아이의 특징(체중, 알레르기, 건강 고민)을 적어주시면 영양사가 1:1 맞춤 식단을 구성해 드립니다.</p>
+            </div>
+          </div>
+          <a href="#plans" class="whitespace-nowrap px-5 py-2.5 rounded-xl bg-terracotta hover:bg-terracottaDark text-white text-xs font-black shadow-sm transition">
+            1:1 맞춤 플랜 보러가기 →
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- Cat Nutrition & Health Magazine Blog -->
     <section id="blog" class="max-w-6xl mx-auto px-4 sm:px-6 py-18">
       <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-8">
@@ -650,14 +715,37 @@
           <div>
             <label class="block text-xs font-extrabold text-charcoal mb-1.5">묘종 · 견종 선택</label>
             <select id="petBreedSelect" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm bg-white focus:outline-none focus:border-terracotta transition">
-              <option value="코리안숏헤어 (단모묘)">코리안숏헤어 (단모묘)</option>
-              <option value="페르시안·랙돌 (장모묘)">페르시안·랙돌 (장모묘)</option>
-              <option value="러시안블루·샴">러시안블루·샴</option>
-              <option value="브리티시숏헤어·스코티시폴드">브리티시숏헤어·스코티시폴드</option>
-              <option value="노르웨이숲·메인쿤">노르웨이숲·메인쿤</option>
-              <option value="말티즈·푸들·포메 (강아지)">말티즈·푸들·포메 (강아지)</option>
-              <option value="리트리버·시바·웰시코기 (강아지)">리트리버·시바·웰시코기 (강아지)</option>
-              <option value="기타 (요청사항에 직접 입력)">기타 (요청사항에 직접 입력)</option>
+              <optgroup label="🐱 고양이 12종">
+                <option value="코리안숏헤어">코리안숏헤어 (단모)</option>
+                <option value="러시안블루">러시안블루</option>
+                <option value="브리티시숏헤어">브리티시숏헤어</option>
+                <option value="스코티시폴드">스코티시폴드</option>
+                <option value="페르시안">페르시안 (장모)</option>
+                <option value="랙돌">랙돌 (대형 장모)</option>
+                <option value="아메리칸숏헤어">아메리칸숏헤어</option>
+                <option value="먼치킨">먼치킨 (짧은 다리)</option>
+                <option value="샴 (샤미즈)">샴 (샤미즈)</option>
+                <option value="노르웨이숲">노르웨이숲</option>
+                <option value="뱅갈">뱅갈 (호피무늬)</option>
+                <option value="터키시앙고라">터키시앙고라</option>
+              </optgroup>
+              <optgroup label="🐶 강아지 10종">
+                <option value="말티즈">말티즈 (소형견)</option>
+                <option value="푸들 (토이/미니어처)">푸들 (토이/미니어처)</option>
+                <option value="포메라니안">포메라니안</option>
+                <option value="비숑프리제">비숑프리제</option>
+                <option value="시츄">시츄</option>
+                <option value="웰시코기">웰시코기</option>
+                <option value="골든리트리버">골든리트리버 (대형견)</option>
+                <option value="진돗개">진돗개</option>
+                <option value="치와와 (단모/장모)">치와와 (초소형견)</option>
+                <option value="닥스훈트">닥스훈트</option>
+              </optgroup>
+              <optgroup label="기타 / 믹스">
+                <option value="믹스묘 / 길냥이 출신">믹스묘 / 코숏 믹스</option>
+                <option value="믹스견 / 하이브리드견">믹스견 / 하이브리드견</option>
+                <option value="기타 품종 (요청사항에 기재)">기타 품종 (직접 입력)</option>
+              </optgroup>
             </select>
           </div>
         </div>
@@ -683,6 +771,77 @@
           우리 아이 맞춤 구성 담기 & 확정
         </button>
       </form>
+    </div>
+  </div>
+
+
+  <!-- Modal: Breed Encyclopedia Detail Modal -->
+  <div id="breedModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="breedModalTitle">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl border border-stone-200 space-y-5 animate-in fade-in zoom-in duration-200">
+      <div class="flex items-start justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <img id="breedModalImg" src="" alt="" class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border-2 border-stone-200 shadow-sm" />
+          <div>
+            <div class="flex items-center gap-2">
+              <span id="breedModalBadge" class="inline-block px-2.5 py-0.5 rounded-full text-xs font-black bg-terracottaLight text-terracottaDark">고양이</span>
+              <span id="breedModalCoat" class="text-xs font-bold text-muted bg-sand px-2 py-0.5 rounded-full">단모</span>
+            </div>
+            <h3 id="breedModalTitle" class="text-xl sm:text-2xl font-black text-charcoal mt-1">품종명</h3>
+            <p id="breedModalSize" class="text-xs text-muted font-medium mt-0.5">체형 정보</p>
+          </div>
+        </div>
+        <button id="closeBreedModal" type="button" class="p-2 rounded-xl text-muted hover:bg-sand shrink-0 transition text-lg" aria-label="모달 닫기">✕</button>
+      </div>
+
+      <!-- 성격 및 대표 기질 -->
+      <div class="bg-cream p-4 rounded-2xl border border-stone-200/70">
+        <h4 class="text-xs font-extrabold text-terracotta uppercase tracking-wider mb-1 flex items-center gap-1.5">
+          <span>🐾</span> 성격 및 대표 기질
+        </h4>
+        <p id="breedModalPersonality" class="text-sm text-charcoal leading-relaxed font-medium"></p>
+      </div>
+
+      <!-- 건강 관리 포인트 -->
+      <div>
+        <h4 class="text-xs font-extrabold text-charcoal uppercase tracking-wider mb-2 flex items-center gap-1.5">
+          <span>🩺</span> 집사가 꼭 챙겨야 할 건강 관리 & 질환 예방
+        </h4>
+        <div id="breedModalHealthCare" class="space-y-2">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- 추천 맞춤 음식 & 급여 팁 -->
+      <div class="bg-forest/5 p-4 sm:p-5 rounded-2xl border border-forest/15 space-y-3">
+        <h4 class="text-xs font-black text-forest uppercase tracking-wider flex items-center gap-1.5">
+          <span>🥩</span> 이 품종에게 가장 좋은 추천 수제 원물 & 식단
+        </h4>
+        <div id="breedModalGoodFoods" class="flex flex-wrap gap-2">
+          <!-- Badges of good foods -->
+        </div>
+        <div class="pt-2 border-t border-forest/10">
+          <p class="text-xs font-bold text-forest mb-1">💡 맞춤 급여 형태 & 수분 보충 팁</p>
+          <p id="breedModalFoodGuide" class="text-xs sm:text-sm text-charcoal/80 leading-relaxed"></p>
+        </div>
+      </div>
+
+      <!-- 주의해야 할 점 -->
+      <div class="bg-amber-50/70 p-4 rounded-2xl border border-amber-200/80">
+        <h4 class="text-xs font-bold text-amber-800 flex items-center gap-1.5 mb-1">
+          <span>⚠️</span> 급여 시 주의사항 & 조심할 음식
+        </h4>
+        <p id="breedModalCaution" class="text-xs text-amber-900 leading-relaxed"></p>
+      </div>
+
+      <!-- 액션 버튼 -->
+      <div class="pt-2 flex flex-col sm:flex-row gap-2.5">
+        <button id="breedModalSubBtn" type="button" class="flex-1 py-3 px-4 rounded-xl bg-terracotta text-white font-extrabold text-sm hover:bg-terracottaDark transition flex items-center justify-center gap-2 shadow-md">
+          <span>📦</span> <span id="breedModalSubBtnText">이 품종으로 맞춤 구독 박스 신청하기</span>
+        </button>
+        <button type="button" onclick="document.getElementById('breedModal').classList.add('hidden'); document.getElementById('breedModal').classList.remove('flex');" class="py-3 px-5 rounded-xl border border-stone-200 text-charcoal font-bold text-sm hover:bg-sand transition">
+          닫기
+        </button>
+      </div>
     </div>
   </div>
 
@@ -1421,7 +1580,7 @@
     // Close modals on escape key or backdrop click
     window.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
-        ['subModal', 'blogModal', 'savedModal'].forEach(id => {
+        ['subModal', 'blogModal', 'savedModal', 'breedModal'].forEach(id => {
           const el = document.getElementById(id);
           if (el) {
             el.classList.add('hidden');
@@ -1431,7 +1590,7 @@
       }
     });
 
-    ['subModal', 'blogModal', 'savedModal'].forEach(id => {
+    ['subModal', 'blogModal', 'savedModal', 'breedModal'].forEach(id => {
       const modal = document.getElementById(id);
       modal.addEventListener('click', e => {
         if (e.target === modal) {
@@ -1441,7 +1600,541 @@
       });
     });
 
+
+    // ==========================================
+    // 22 Pet Breeds Encyclopedia & Nutrition Data
+    // ==========================================
+const breedCatalog = [
+      // 고양이 12종
+      {
+        id: 'cat-korean-shorthair',
+        type: 'cat',
+        name: '코리안숏헤어',
+        coat: '단모',
+        size: '중형묘 (3.5 ~ 5.5kg)',
+        img: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&auto=format&fit=crop',
+        personality: '호기심이 왕성하고 영리하며 활동적임. 친화력이 좋고 적응력이 뛰어남.',
+        healthCare: ['음수량 부족으로 인한 하부비뇨기 질환(방광염/결석)', '실내 생활로 인한 복부 비만', '환절기 헤어볼 구토'],
+        goodFoods: ['동결건조 생연어 다이스', '무항생제 닭안심 수분 퓨레', '국내산 단호박 식이섬유'],
+        foodGuide: '갈증을 잘 느끼지 못하므로 동결건조 트릿을 미지근한 물에 불려 국물과 함께 급여하는 것이 최적입니다.',
+        caution: '사람용 멸치나 가공 캔 등 염분이 높은 어포 절대 금지 (신장 결석 유발)'
+      },
+      {
+        id: 'cat-russian-blue',
+        type: 'cat',
+        name: '러시안블루',
+        coat: '단모 (이중모)',
+        size: '중형묘 (3.0 ~ 4.8kg)',
+        img: 'https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=600&auto=format&fit=crop',
+        personality: '온순하고 조용하며 집사에게 깊은 애정을 보임. 낯선 사람에게는 수줍음.',
+        healthCare: ['스트레스성 비뇨기 결석 (환경 변화에 민감)', '활동량 저하 시 비만 위험', '치석 및 잇몸 염증'],
+        goodFoods: ['저염 가다랑어포 플레이크', '수분 듬뿍 치킨 테린', '초유 타우린 트릿'],
+        foodGuide: '부드러운 습식 테린 위주로 급여하고, 사냥 놀이 후 보상으로 단일 단백질 트릿을 활용하세요.',
+        caution: '스트레스로 인한 과식 혹은 거식증 주의, 정량 제한 급여 권장'
+      },
+      {
+        id: 'cat-british-shorthair',
+        type: 'cat',
+        name: '브리티시숏헤어',
+        coat: '단모 (조밀한 털)',
+        size: '중대형묘 (4.0 ~ 7.0kg)',
+        img: 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=600&auto=format&fit=crop',
+        personality: '느긋하고 참을성이 강함. 안기는 것보다 곁에 머무는 것을 좋아하는 신사.',
+        healthCare: ['비대성 심근병증(HCM) 유전 질환', '체중 과다로 인한 관절·척추 부담', '치주염'],
+        goodFoods: ['고단백 저지방 칠면조 큐브', '오메가3 생연어 필렛', '유산균 덴탈 스틱'],
+        foodGuide: '단백질 함량이 높고 탄수화물이 적은 저칼로리 동결건조 토퍼가 체형 유지에 좋습니다.',
+        caution: '볼살과 체형이 둥글어 살이 찌기 쉬우므로 고탄수화물 간식 제한'
+      },
+      {
+        id: 'cat-scottish-fold',
+        type: 'cat',
+        name: '스코티시폴드',
+        coat: '단모/중모',
+        size: '중형묘 (3.0 ~ 5.0kg)',
+        img: 'https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?w=600&auto=format&fit=crop',
+        personality: '상냥하고 조용하며 사람을 잘 따름. 특유의 편안한 앉은 자세를 자주 취함.',
+        healthCare: ['골연골 이형성증(관절 연골 기형 및 만성 관절염)', '접힌 귀 외이도염', '다낭포 신장질환(PKD)'],
+        goodFoods: ['초록입홍합 관절 파우더', '연어 오메가3 트릿', '저인(Low-P) 수분 화식'],
+        foodGuide: '관절에 무리를 주지 않도록 체중 감량형 식단과 연골 보호 성분을 꾸준히 섭취해야 합니다.',
+        caution: '딱딱한 뼈 간식은 연골과 치아에 통증을 줄 수 있으므로 부드러운 저온 건조나 퓨레 추천'
+      },
+      {
+        id: 'cat-persian',
+        type: 'cat',
+        name: '페르시안',
+        coat: '장모 (풍성한 이중모)',
+        size: '중대형묘 (3.5 ~ 6.0kg)',
+        img: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=600&auto=format&fit=crop',
+        personality: '매우 얌전하고 우아하며 차분함. 시끄럽거나 복잡한 환경을 싫어함.',
+        healthCare: ['장모 그루밍으로 인한 심한 헤어볼 뭉침 및 장폐색', '다낭포 신장질환(PKD)', '단두종 눈물 착색'],
+        goodFoods: ['유기농 귀리 캣그라스', '단호박 식이섬유 퓨레', '저인(Low-P) 닭안심 테린'],
+        foodGuide: '납작한 주둥이 구조상 집어먹기 편한 넙적한 큐브 또는 핥아먹는 스튜 형태가 적합합니다.',
+        caution: '인(P) 수치가 높은 붉은 살코기 과다 섭취 주의, 신장 부담을 줄이는 식단 유지'
+      },
+      {
+        id: 'cat-ragdoll',
+        type: 'cat',
+        name: '랙돌',
+        coat: '장모 (비단결 같은 털)',
+        size: '대형묘 (4.5 ~ 8.5kg)',
+        img: 'https://images.unsplash.com/photo-1513360010508-32c1807ed935?w=600&auto=format&fit=crop',
+        personality: '안아 올리면 인형처럼 몸을 맡기는 순둥이. 공격성이 없고 집사 사랑이 지극함.',
+        healthCare: ['대형묘 슬개골 및 고관절 이형성증', '비대성 심근병증(HCM)', '털 엉킴 및 헤어볼'],
+        goodFoods: ['초록입홍합 & 생연어 듀오', '소화 효소 유산균 토퍼', '수분 듬뿍 테린'],
+        foodGuide: '성장이 3~4세까지 이어지는 대형묘이므로 양질의 동물성 단백질과 필수 지방산을 공급하세요.',
+        caution: '느긋해서 운동량이 적으므로 과체중이 되지 않도록 1일 칼로리 조절 필수'
+      },
+      {
+        id: 'cat-american-shorthair',
+        type: 'cat',
+        name: '아메리칸숏헤어',
+        coat: '단모 (단단한 털)',
+        size: '중대형묘 (4.0 ~ 6.5kg)',
+        img: 'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600&auto=format&fit=crop',
+        personality: '쾌활하고 장난기가 넘치며 건강미 넘침. 독립적이면서도 가족에게 살가움.',
+        healthCare: ['식탐 과다로 인한 비만 및 당뇨', '심장 HCM 정기 검진', '관절 건강'],
+        goodFoods: ['무염 닭가슴살 져키', '동결건조 북어 트릿', '단호박 오트밀 쿠키'],
+        foodGuide: '씹는 욕구를 충족시켜주는 쫄깃한 식감의 저온 건조 육포와 트릿이 적합합니다.',
+        caution: '자율 급식 시 폭식하기 쉬우므로 정량 제한 급여 필수'
+      },
+      {
+        id: 'cat-munchkin',
+        type: 'cat',
+        name: '먼치킨',
+        coat: '단모/장모 다양',
+        size: '소형/중형묘 (2.5 ~ 4.0kg)',
+        img: 'https://images.unsplash.com/photo-1561948955-570b270e7c36?w=600&auto=format&fit=crop',
+        personality: '짧은 다리에도 달리기와 점프를 즐기는 에너자이저. 호기심과 애교가 넘침.',
+        healthCare: ['짧은 다리로 인한 척추 질환(척추 전만증)', '관절염', '체중 증가 시 척추 마비 위험'],
+        goodFoods: ['항염 오메가3 연어 큐브', '초록입홍합 분말', '저칼로리 닭안심 수분팩'],
+        foodGuide: '100g 단위로 체중을 엄격히 관리할 수 있는 저칼로리 고단백 간식 급여.',
+        caution: '비만은 척추에 치명적이므로 탄수화물/고지방 간식 엄격 금지'
+      },
+      {
+        id: 'cat-siamese',
+        type: 'cat',
+        name: '샴 (샤미즈)',
+        coat: '단모 (몸에 밀착)',
+        size: '중형묘 (3.0 ~ 4.5kg)',
+        img: 'https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=600&auto=format&fit=crop',
+        personality: '말이 아주 많고 똑똑함. 집사 껌딱지로 혼자 있는 것을 극도로 싫어함.',
+        healthCare: ['유전성 간/신장 아밀로이드증', '천식 및 기관지 질환', '치은염'],
+        goodFoods: ['동결건조 메추리 & 오리안심', '타우린 보충 트릿', '생연어 큐브'],
+        foodGuide: '슬림한 근육질 몸매를 유지하기 위해 기름기 없는 순수 단일 원물 단백질 추천.',
+        caution: '스트레스로 인한 이식증(천이나 비닐 씹기) 주의, 씹는 욕구는 안전한 육포로 해소'
+      },
+      {
+        id: 'cat-norwegian-forest',
+        type: 'cat',
+        name: '노르웨이숲',
+        coat: '장모 (방수 이중모)',
+        size: '대형묘 (5.0 ~ 9.0kg)',
+        img: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&auto=format&fit=crop',
+        personality: '야성미 넘치는 외모와 달리 지극히 온순하고 영리함. 높은 캣타워를 사랑함.',
+        healthCare: ['심장 비대증(HCM)', '대형묘 고관절 이형성증', '장모 헤어볼'],
+        goodFoods: ['한우 홍두깨살 육포', '노르웨이 생연어 필렛', '캣그라스 식이섬유'],
+        foodGuide: '큼직한 턱 구조에 맞는 큼직하고 바삭한 동결건조 원물 블록 추천.',
+        caution: '성장기가 긴 대형묘이므로 칼슘과 인의 비율을 세심하게 체크'
+      },
+      {
+        id: 'cat-bengal',
+        type: 'cat',
+        name: '뱅갈',
+        coat: '단모 (표범 무늬)',
+        size: '중대형묘 (4.0 ~ 7.0kg)',
+        img: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=600&auto=format&fit=crop',
+        personality: '압도적인 운동량과 사냥 본능. 물을 좋아하고 산책을 즐기기도 함.',
+        healthCare: ['진행성 망막 위축증(PRA)', '슬개골 탈구', '과민성 장 증후군 (소화 민감)'],
+        goodFoods: ['무염 닭가슴살 큐브', '생연어 다이스', '장 건강 생유산균 토퍼'],
+        foodGuide: '엄청난 활동량을 뒷받침하는 순수 육류 고단백 간식과 소화 흡수가 빠른 동결건조.',
+        caution: '장이 예민하므로 기름기가 많은 간식 급여 시 묽은 변이나 설사 주의'
+      },
+      {
+        id: 'cat-turkish-angora',
+        type: 'cat',
+        name: '터키시앙고라',
+        coat: '중장모 (비단결)',
+        size: '중형묘 (3.0 ~ 5.0kg)',
+        img: 'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600&auto=format&fit=crop',
+        personality: '우아하고 영리하며 충성심이 강함. 물놀이와 집사와의 교감을 즐김.',
+        healthCare: ['백색 털/파란 눈 개체의 선천성 난청', '신장 및 요로결석', '헤어볼 구토'],
+        goodFoods: ['수분 파우치 치킨 테린', '단호박 식이섬유 스틱', '연어 오메가3'],
+        foodGuide: '피모의 윤기를 돕는 오메가3 오일 토핑과 음수량을 채워주는 수분 테린 권장.',
+        caution: '수분 부족에 취약하므로 마른 건사료 단독 급여보다는 촉촉한 수분 간식 병행'
+      },
+
+      // 강아지 10종
+      {
+        id: 'dog-maltese',
+        type: 'dog',
+        name: '말티즈',
+        coat: '장모 (하얗고 부드러움)',
+        size: '소형견 (2.0 ~ 3.5kg)',
+        img: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&auto=format&fit=crop',
+        personality: '애교가 많고 활발하며 주인에 대한 애착이 큼. 똑똑하고 당찬 성격.',
+        healthCare: ['슬개골 탈구 1~4기 (소형견 다발)', '붉은 눈물 자국(포르피린)', '노령기 심장병(이첨판 폐쇄부전)'],
+        goodFoods: ['초록입홍합 관절 파우더', '저알레르기 오리안심 육포', '단호박 비스킷'],
+        foodGuide: '치아가 작으므로 단단하지 않고 부드러운 저온 건조 스틱이나 한입 큐브 형태 권장.',
+        caution: '알레르기 유발이 잦은 인공 색소 간식 급여 시 눈물 자국 폭발 주의'
+      },
+      {
+        id: 'dog-poodle',
+        type: 'dog',
+        name: '푸들 (토이/미니어처)',
+        coat: '곱슬모 (털 빠짐 적음)',
+        size: '소형/중형견 (3.0 ~ 6.0kg)',
+        img: 'https://images.unsplash.com/photo-1546527868-ccb7ee7dfa6a?w=600&auto=format&fit=crop',
+        personality: '지능 순위 2위의 천재견. 훈련 습득이 빠르고 가족과 깊은 정서적 교감.',
+        healthCare: ['슬개골 탈구 및 고관절', '귓속 털로 인한 귓병·외이도염', '호르몬 질환(쿠싱)'],
+        goodFoods: ['생연어 큐브', '오리안심 스틱', '유산균 덴탈 츄'],
+        foodGuide: '두뇌 자극 노즈워크용 소형 동결건조 트릿 및 치석 제거용 덴탈 간식.',
+        caution: '너무 똑똑해서 간식 편식이 생길 수 있으므로 주식을 거부할 땐 간식 엄격 절제'
+      },
+      {
+        id: 'dog-pomeranian',
+        type: 'dog',
+        name: '포메라니안',
+        coat: '풍성한 이중모',
+        size: '소형견 (1.8 ~ 3.2kg)',
+        img: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop',
+        personality: '당차고 호기심이 많으며 자신감이 넘침. 경계심이 있어 헛짖음 교육 필요.',
+        healthCare: ['슬개골 탈구 및 뼈 골절 (다리뼈가 매우 얇음)', '기관지 협착증(거위 소리 기침)', '탈모증(알로페시아)'],
+        goodFoods: ['오메가3 연어 트릿', '콜라겐 북어 큐브', '기관지 완화 배·단호박 퓨레'],
+        foodGuide: '기관지에 걸리지 않도록 얇게 저민 저온 건조 육포나 촉촉한 화식 추천.',
+        caution: '목에 걸리기 쉬운 단단하고 큰 뼈 간식 절대 금지'
+      },
+      {
+        id: 'dog-bichon-frise',
+        type: 'dog',
+        name: '비숑프리제',
+        coat: '곱슬모 (헬멧 볼륨)',
+        size: '소형/중형견 (4.5 ~ 7.5kg)',
+        img: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&auto=format&fit=crop',
+        personality: '명랑하고 에너지가 넘치며 독립적. 누구에게나 친절하고 다정함.',
+        healthCare: ['식이 알레르기로 인한 아토피성 피부염', '백내장 및 안구 질환', '슬개골 탈구'],
+        goodFoods: ['가수분해 연어 트릿', '칠면조 테린', '초록입홍합 관절 간식'],
+        foodGuide: '피부 알레르기를 일으키지 않는 단일 원물 단백질 위주 간식.',
+        caution: '단백질 과다 급여 시 알레르기로 발과 귀를 심하게 핥을 수 있으므로 성분 확인'
+      },
+      {
+        id: 'dog-shih-tzu',
+        type: 'dog',
+        name: '시츄',
+        coat: '장모 (이중모)',
+        size: '소형견 (4.5 ~ 8.0kg)',
+        img: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600&auto=format&fit=crop',
+        personality: '낙천적이고 온순하며 공격성이 거의 없음. 은근한 고집쟁이.',
+        healthCare: ['단두종 호흡기 증후군', '돌출된 눈 각막염 및 건성 각결막염', '신장 결석 및 비만'],
+        goodFoods: ['블루베리 항산화 파우더', '소화가 편한 단호박 닭가슴살', '북어 스틱'],
+        foodGuide: '단두종 구조상 쉽게 씹어 삼킬 수 있는 넙적하고 부드러운 형태의 간식.',
+        caution: '식탐이 강해 쉽게 살이 찌므로 단호박, 당근 등 야채 간식으로 포만감 유도'
+      },
+      {
+        id: 'dog-welsh-corgi',
+        type: 'dog',
+        name: '웰시코기',
+        coat: '단모~중모 (털 빠짐 극심)',
+        size: '중형견 (10.0 ~ 14.0kg)',
+        img: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&auto=format&fit=crop',
+        personality: '자신감이 넘치고 총명하며 활달함. 목양견 출신으로 몰이 본능이 강함.',
+        healthCare: ['긴 허리와 짧은 다리로 인한 추간판 탈구증(디스크 IVDD)', '비만 시 디스크 파열 급증', '고관절'],
+        goodFoods: ['초록입홍합 & 상어연골 분말', '저지방 캥거루·칠면조 큐브', '당근 칩'],
+        foodGuide: '체중 감량과 관절 항염을 동시에 돕는 고단백 저칼로리 간식 필수.',
+        caution: '살이 1kg만 쪄도 척추 디스크에 치명적이므로 탄수화물/고칼로리 간식 엄금'
+      },
+      {
+        id: 'dog-golden-retriever',
+        type: 'dog',
+        name: '골든리트리버',
+        coat: '풍성한 방수 이중모',
+        size: '대형견 (25.0 ~ 36.0kg)',
+        img: 'https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&auto=format&fit=crop',
+        personality: '천사견이라 불릴 만큼 다정하고 사람을 극진히 사랑함. 에너지가 넘침.',
+        healthCare: ['고관절 및 주관절 이형성증 (대형견 만성 질환)', '암(혈관육종 등) 발병률 유의', '습진성 피부염'],
+        goodFoods: ['한우 홍두깨살 대용량 육포', '생연어 관절 큐브', '오리목뼈 저온 건조'],
+        foodGuide: '씹는 스트레스를 해소해 주는 큼직하고 쫄깃한 원물 육포 및 관절 영양 화식.',
+        caution: '빠르게 흡입하듯 먹으므로 급체나 위염전 예방을 위해 천천히 씹어먹게 유도'
+      },
+      {
+        id: 'dog-jindo',
+        type: 'dog',
+        name: '진돗개',
+        coat: '이중모 (단모~중모)',
+        size: '중대형견 (15.0 ~ 23.0kg)',
+        img: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop',
+        personality: '주인에 대한 충성심과 복종심이 절대적. 귀소본능이 뛰어나고 청결함.',
+        healthCare: ['실외 배변 고집으로 인한 소변 참기 및 방광 질환', '피부 농피증', '소화기 건강'],
+        goodFoods: ['국내산 무항생제 닭가슴살 져키', '동결건조 북어채', '단호박 오트밀 쿠키'],
+        foodGuide: '순수 국내산 원물로 깔끔하게 건조한 단일 단백질 천연 육포.',
+        caution: '낯선 음식에 경계심이 있을 수 있으므로 익숙한 닭/오리/생선 원물부터 급여'
+      },
+      {
+        id: 'dog-chihuahua',
+        type: 'dog',
+        name: '치와와 (단모/장모)',
+        coat: '단모/장모',
+        size: '초소형견 (1.5 ~ 3.0kg)',
+        img: 'https://images.unsplash.com/photo-1546527868-ccb7ee7dfa6a?w=600&auto=format&fit=crop',
+        personality: '작은 체구에 비해 기개가 넘치고 용맹함. 주인에 대한 독점욕이 강함.',
+        healthCare: ['머리 천문(몰레라) 미폐쇄 충격 주의', '슬개골 탈구 및 저혈당 쇼크', '심장 승모판 질환'],
+        goodFoods: ['한입 크기 닭안심 큐브', '오메가3 연어 파우더 토퍼', '황태 보양 퓨레'],
+        foodGuide: '체구가 매우 작으므로 쌀알 크기의 미니 트릿 또는 핥아먹는 부드러운 죽.',
+        caution: '공복 시간이 길어지면 저혈당이 올 수 있으므로 소량씩 자주 영양 공급 필요'
+      },
+      {
+        id: 'dog-dachshund',
+        type: 'dog',
+        name: '닥스훈트',
+        coat: '단모/장모/와이어헤어',
+        size: '소형견 (4.0 ~ 5.5kg)',
+        img: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&auto=format&fit=crop',
+        personality: '명랑하고 장난기가 넘치며 사냥개 출신으로 후각과 집념이 대단함.',
+        healthCare: ['추간판 탈구증(허리 디스크) 발병률 1위 품종', '비만 시 디스크 파열 급증', '치주염'],
+        goodFoods: ['상어연골 관절 덴탈 스틱', '저지방 오리안심 육포', '단호박 말랭이'],
+        foodGuide: '체중 조절을 엄격히 돕는 저칼로리 간식과 치아 건강용 덴탈 스틱.',
+        caution: '높은 곳에서 뛰어내리는 습관과 과식은 디스크 마비를 부르므로 엄격 통제'
+      }
+    ];
+
+    // Breed Encyclopedia State & Functions
+    let currentBreedType = 'all'; // 'all' | 'cat' | 'dog'
+    let currentBreedQuery = '';
+
+    function renderBreeds() {
+      const grid = document.getElementById('breedGrid');
+      const emptyState = document.getElementById('breedEmptyState');
+      if (!grid) return;
+
+      const q = currentBreedQuery.toLowerCase().trim();
+      const filtered = breedCatalog.filter(item => {
+        const matchesType = (currentBreedType === 'all') || (item.type === currentBreedType);
+        if (!matchesType) return false;
+        if (!q) return true;
+
+        const healthStr = (item.healthCare || []).join(' ');
+        const foodsStr = (item.goodFoods || []).join(' ');
+        return item.name.toLowerCase().includes(q) ||
+               (item.personality && item.personality.toLowerCase().includes(q)) ||
+               healthStr.toLowerCase().includes(q) ||
+               foodsStr.toLowerCase().includes(q) ||
+               (item.foodGuide && item.foodGuide.toLowerCase().includes(q));
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        if (emptyState) emptyState.classList.remove('hidden');
+        return;
+      }
+
+      if (emptyState) emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(b => {
+        const typeBadge = b.type === 'cat' 
+          ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-blue-100 text-blue-800">🐱 고양이</span>' 
+          : '<span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-100 text-amber-800">🐶 강아지</span>';
+        
+        const healthBadges = (b.healthCare || []).slice(0, 2).map(h => 
+          `<span class="inline-block text-[10px] font-bold text-red-600 bg-red-50 border border-red-200/60 px-2 py-0.5 rounded-md">⚠️ ${h.split('(')[0].trim()}</span>`
+        ).join('');
+
+        const foodBadges = (b.goodFoods || []).map(f =>
+          `<span class="inline-block text-[11px] font-extrabold text-forest bg-forestLight/60 px-2 py-0.5 rounded-md">✨ ${f}</span>`
+        ).join('');
+
+        return `
+          <div class="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group">
+            <div class="relative h-44 sm:h-48 overflow-hidden bg-sand">
+              <img src="${b.img}" alt="${b.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <div class="absolute top-3 left-3 flex items-center gap-1.5">
+                ${typeBadge}
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/90 backdrop-blur-sm text-charcoal border border-stone-200/60">${b.coat}</span>
+              </div>
+              <div class="absolute bottom-2 right-2 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-sm text-white text-[10px] font-bold">
+                ${b.size}
+              </div>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+              <div>
+                <div class="flex items-center justify-between">
+                  <h3 class="text-lg font-black text-charcoal">${b.name}</h3>
+                  <span class="text-xs text-muted font-bold">${b.coat}</span>
+                </div>
+                <p class="text-xs text-muted line-clamp-2 mt-1 leading-relaxed">${b.personality}</p>
+
+                <!-- Health Warning Point -->
+                <div class="mt-3 pt-3 border-t border-stone-100">
+                  <p class="text-[10px] font-extrabold text-muted uppercase tracking-wider mb-1.5">🚨 주요 주의 질환</p>
+                  <div class="flex flex-wrap gap-1">
+                    ${healthBadges}
+                  </div>
+                </div>
+
+                <!-- Recommended Foods -->
+                <div class="mt-3">
+                  <p class="text-[10px] font-extrabold text-forest uppercase tracking-wider mb-1.5">🥩 어떤 음식이 좋은가요?</p>
+                  <div class="flex flex-wrap gap-1">
+                    ${foodBadges}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Buttons -->
+              <div class="pt-2 flex gap-2">
+                <button type="button" class="open-breed-detail flex-1 py-2.5 px-3 rounded-xl bg-sand hover:bg-stone-200 text-charcoal font-bold text-xs transition" data-breed-id="${b.id}">
+                  상세 백과 & 급여법 📖
+                </button>
+                <button type="button" class="breed-to-sub py-2.5 px-3 rounded-xl bg-terracotta hover:bg-terracottaDark text-white font-bold text-xs transition shadow-sm" data-breed-name="${b.name}">
+                  맞춤구독 📦
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Attach button events
+      grid.querySelectorAll('.open-breed-detail').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-breed-id');
+          openBreedModal(id);
+        });
+      });
+
+      grid.querySelectorAll('.breed-to-sub').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const bname = btn.getAttribute('data-breed-name');
+          applyBreedToSubscription(bname);
+        });
+      });
+    }
+
+    function openBreedModal(breedId) {
+      const b = breedCatalog.find(item => item.id === breedId);
+      if (!b) return;
+
+      document.getElementById('breedModalImg').src = b.img;
+      document.getElementById('breedModalImg').alt = b.name;
+      document.getElementById('breedModalTitle').textContent = b.name;
+      document.getElementById('breedModalSize').textContent = b.size;
+      document.getElementById('breedModalCoat').textContent = b.coat;
+      
+      const badge = document.getElementById('breedModalBadge');
+      if (b.type === 'cat') {
+        badge.textContent = '🐱 고양이';
+        badge.className = 'inline-block px-2.5 py-0.5 rounded-full text-xs font-black bg-blue-100 text-blue-800';
+      } else {
+        badge.textContent = '🐶 강아지';
+        badge.className = 'inline-block px-2.5 py-0.5 rounded-full text-xs font-black bg-amber-100 text-amber-800';
+      }
+
+      document.getElementById('breedModalPersonality').textContent = b.personality;
+
+      const healthContainer = document.getElementById('breedModalHealthCare');
+      healthContainer.innerHTML = (b.healthCare || []).map(h => 
+        `<div class="flex items-start gap-2 p-2.5 rounded-xl bg-red-50/60 border border-red-200/60 text-xs text-charcoal leading-relaxed font-medium">
+          <span class="text-red-500 shrink-0 font-bold">⚠️</span>
+          <span>${h}</span>
+        </div>`
+      ).join('');
+
+      const foodContainer = document.getElementById('breedModalGoodFoods');
+      foodContainer.innerHTML = (b.goodFoods || []).map(f => 
+        `<span class="px-3 py-1.5 rounded-xl bg-forestLight text-forest font-extrabold text-xs">✨ ${f}</span>`
+      ).join('');
+
+      document.getElementById('breedModalFoodGuide').textContent = b.foodGuide;
+      document.getElementById('breedModalCaution').textContent = b.caution;
+      document.getElementById('breedModalSubBtnText').textContent = `'${b.name}' 맞춤 구독 박스 신청하기`;
+
+      const subBtn = document.getElementById('breedModalSubBtn');
+      subBtn.onclick = () => {
+        document.getElementById('breedModal').classList.add('hidden');
+        document.getElementById('breedModal').classList.remove('flex');
+        applyBreedToSubscription(b.name);
+      };
+
+      const modal = document.getElementById('breedModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function applyBreedToSubscription(breedName) {
+      const select = document.getElementById('petBreedSelect');
+      if (select) {
+        let found = false;
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].text.includes(breedName) || select.options[i].value.includes(breedName)) {
+            select.selectedIndex = i;
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          const opt = new Option(breedName, breedName, true, true);
+          select.add(opt);
+        }
+      }
+      // Open subscription modal with Silver plan as default
+      openSubModal(planCatalog.cat[1]);
+      showToast(`'${breedName}' 맞춤 구독 신청 창이 열렸습니다!`);
+    }
+
+
+    // Breed filter tabs
+    document.querySelectorAll('.breed-type-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentBreedType = btn.getAttribute('data-breed-type');
+        document.querySelectorAll('.breed-type-btn').forEach(b => {
+          b.classList.remove('bg-charcoal', 'text-white');
+          b.classList.add('text-muted');
+        });
+        btn.classList.add('bg-charcoal', 'text-white');
+        btn.classList.remove('text-muted');
+        renderBreeds();
+      });
+    });
+
+    // Breed search input
+    const breedSearchInput = document.getElementById('breedSearchInput');
+    if (breedSearchInput) {
+      breedSearchInput.addEventListener('input', e => {
+        currentBreedQuery = e.target.value;
+        renderBreeds();
+      });
+    }
+
+    const breedResetBtn = document.getElementById('breedResetSearchBtn');
+    if (breedResetBtn) {
+      breedResetBtn.addEventListener('click', () => {
+        currentBreedQuery = '';
+        currentBreedType = 'all';
+        if (breedSearchInput) breedSearchInput.value = '';
+        document.querySelectorAll('.breed-type-btn').forEach(b => {
+          if (b.getAttribute('data-breed-type') === 'all') {
+            b.classList.add('bg-charcoal', 'text-white');
+            b.classList.remove('text-muted');
+          } else {
+            b.classList.remove('bg-charcoal', 'text-white');
+            b.classList.add('text-muted');
+          }
+        });
+        renderBreeds();
+      });
+    }
+
+    // Breed Modal Close
+    const closeBreedModal = document.getElementById('closeBreedModal');
+    if (closeBreedModal) {
+      closeBreedModal.addEventListener('click', () => {
+        const modal = document.getElementById('breedModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      });
+    }
+    
     // Initialize App
+    renderBreeds();
     renderPetLog();
     renderFocusChips();
     renderPlans();
@@ -1469,10 +2162,10 @@
         <span class="text-[10px] font-black tracking-tight">홈</span>
       </a>
 
-      <!-- Tab 2: Process & Video -->
-      <a href="#process" class="flex flex-col items-center justify-center text-charcoal/70 hover:text-terracotta active:text-terracotta transition-colors py-1">
-        <svg class="w-5 h-5 fill-none stroke-current stroke-2 mb-0.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
-        <span class="text-[10px] font-bold tracking-tight">수제공정</span>
+      <!-- Tab 2: Pet Breed Encyclopedia -->
+      <a href="#encyclopedia" class="flex flex-col items-center justify-center text-charcoal/70 hover:text-terracotta active:text-terracotta transition-colors py-1">
+        <svg class="w-5 h-5 fill-none stroke-current stroke-2 mb-0.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        <span class="text-[10px] font-bold tracking-tight">품종백과</span>
       </a>
 
       <!-- Tab 3: Subscription Plans (Center Highlight Button) -->
