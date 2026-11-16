@@ -1,0 +1,13 @@
+{
+  "appId": "com.gudogyaong.app",
+  "appName": "구독야옹",
+  "webDir": "www",
+  "server": {
+    "url": "https://gudogyaong.pages.dev/",
+    "cleartext": true
+  },
+  "android": {
+    "backgroundColor": "#FAF7F2",
+    "allowMixedContent": true
+  }
+}

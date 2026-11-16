@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <!-- Background Circle -->
+    <path
+        android:fillColor="#E06D3B"
+        android:pathData="M 15,15 h 70 a 15,15 0 0 1 15,15 v 40 a 15,15 0 0 1 -15,15 h -70 a 15,15 0 0 1 -15,-15 v -40 a 15,15 0 0 1 15,-15 Z" />
+
+    <!-- Cat Left Ear -->
+    <path
+        android:fillColor="#FAF7F2"
+        android:pathData="M 26,42 L 34,18 L 52,36 Z" />
+    <path
+        android:fillColor="#F4A261"
+        android:pathData="M 31,39 L 37,23 L 48,36 Z" />
+
+    <!-- Cat Right Ear -->
+    <path
+        android:fillColor="#FAF7F2"
+        android:pathData="M 74,42 L 66,18 L 48,36 Z" />
+    <path
+        android:fillColor="#F4A261"
+        android:pathData="M 69,39 L 63,23 L 52,36 Z" />
+
+    <!-- Cat Face -->
+    <path
+        android:fillColor="#FAF7F2"
+        android:pathData="M 50,26 A 30,30 0 1,0 50,86 A 30,30 0 1,0 50,26 Z" />
+
+    <!-- Eyes -->
+    <path
+        android:fillColor="#23201D"
+        android:pathData="M 38,49 A 4.5,5.5 0 1,0 38,60 A 4.5,5.5 0 1,0 38,49 Z" />
+    <path
+        android:fillColor="#23201D"
+        android:pathData="M 62,49 A 4.5,5.5 0 1,0 62,60 A 4.5,5.5 0 1,0 62,49 Z" />
+
+    <!-- Heart Nose -->
+    <path
+        android:fillColor="#E06D3B"
+        android:pathData="M 47.5,63 C 46,61 44,61 44,63 C 44,65 50,69 50,69 C 50,69 56,65 56,63 C 56,61 54,61 52.5,63 Z" />
+</vector>

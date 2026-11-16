@@ -18,6 +18,13 @@
   <meta name="twitter:description" content="물 안 마시는 냥이부터 장모종 헤어볼까지, 맞춤 수제간식과 촉촉한 화식을 매달 집 앞으로!" />
   <meta name="twitter:image" content="./assets/images/hero-kitchen.jpg" />
   
+    <!-- PWA & Mobile Web App Meta -->
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#2A4B3D" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="구독야옹" />
+  <link rel="apple-touch-icon" href="./assets/images/favicon.svg" />
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg" />
   
@@ -1244,6 +1251,16 @@
       });
 
       renderSavedModal();
+
+    // Register Service Worker for PWA (Mobile App)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then(reg => console.log('PWA ServiceWorker registered:', reg.scope))
+          .catch(err => console.log('ServiceWorker registration failed:', err));
+      });
+    }
+
       document.getElementById('subModal').classList.add('hidden');
       document.getElementById('subModal').classList.remove('flex');
       document.getElementById('subForm').reset();
@@ -1298,6 +1315,16 @@
         }
         renderCuration();
         renderSavedModal();
+
+    // Register Service Worker for PWA (Mobile App)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then(reg => console.log('PWA ServiceWorker registered:', reg.scope))
+          .catch(err => console.log('ServiceWorker registration failed:', err));
+      });
+    }
+
         return;
       }
 
@@ -1313,6 +1340,16 @@
     // Open/Close Saved Drawer
     document.getElementById('openSavedBtn').addEventListener('click', () => {
       renderSavedModal();
+
+    // Register Service Worker for PWA (Mobile App)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then(reg => console.log('PWA ServiceWorker registered:', reg.scope))
+          .catch(err => console.log('ServiceWorker registration failed:', err));
+      });
+    }
+
       const modal = document.getElementById('savedModal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
@@ -1335,6 +1372,16 @@
       if (!btn) return;
       state.savedItems = state.savedItems.filter(s => s.id !== btn.dataset.removeSaved);
       renderSavedModal();
+
+    // Register Service Worker for PWA (Mobile App)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then(reg => console.log('PWA ServiceWorker registered:', reg.scope))
+          .catch(err => console.log('ServiceWorker registration failed:', err));
+      });
+    }
+
       renderCuration();
       showToast('항목을 삭제했습니다.');
     });
@@ -1344,6 +1391,16 @@
       if (!state.savedItems.length) return;
       state.savedItems = [];
       renderSavedModal();
+
+    // Register Service Worker for PWA (Mobile App)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then(reg => console.log('PWA ServiceWorker registered:', reg.scope))
+          .catch(err => console.log('ServiceWorker registration failed:', err));
+      });
+    }
+
       renderCuration();
       showToast('관심 목록을 모두 비웠습니다.');
     });
@@ -1378,6 +1435,16 @@
     renderBlogs();
     renderCuration();
     renderSavedModal();
+
+    // Register Service Worker for PWA (Mobile App)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+          .then(reg => console.log('PWA ServiceWorker registered:', reg.scope))
+          .catch(err => console.log('ServiceWorker registration failed:', err));
+      });
+    }
+
   </script>
 </body>
 </html>

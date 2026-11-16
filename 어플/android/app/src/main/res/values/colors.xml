@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cream">#FAF7F2</color>
+    <color name="sand">#F2ECE1</color>
+    <color name="terracotta">#E06D3B</color>
+    <color name="terracotta_dark">#C85A28</color>
+    <color name="forest">#2A4B3D</color>
+    <color name="forest_light">#E8F2EC</color>
+    <color name="charcoal">#23201D</color>
+    <color name="white">#FFFFFF</color>
+</resources>
