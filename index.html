@@ -136,7 +136,7 @@
     }
   </style>
 </head>
-<body class="antialiased selection:bg-terracotta/20 selection:text-charcoal flex flex-col min-h-screen">
+<body class="antialiased selection:bg-terracotta/20 selection:text-charcoal flex flex-col min-h-screen pb-16 md:pb-0">
 
   <!-- Top Announcement Bar -->
   <aside class="bg-forest text-white text-xs sm:text-sm py-2 px-4 text-center font-medium shadow-sm" aria-label="이벤트 공지">
@@ -1459,5 +1459,46 @@
     }
 
   </script>
+
+  <!-- Mobile Bottom Navigation Bar (모바일 전용 하단 탭바) -->
+  <nav id="mobileBottomNav" class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-stone-200/90 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] safe-area-bottom">
+    <div class="grid grid-cols-5 h-16 max-w-md mx-auto items-center px-1">
+      <!-- Tab 1: Home -->
+      <a href="#top" class="flex flex-col items-center justify-center text-charcoal/70 hover:text-terracotta active:text-terracotta transition-colors py-1">
+        <svg class="w-5 h-5 fill-current mb-0.5" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span class="text-[10px] font-black tracking-tight">홈</span>
+      </a>
+
+      <!-- Tab 2: Process & Video -->
+      <a href="#process" class="flex flex-col items-center justify-center text-charcoal/70 hover:text-terracotta active:text-terracotta transition-colors py-1">
+        <svg class="w-5 h-5 fill-none stroke-current stroke-2 mb-0.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+        <span class="text-[10px] font-bold tracking-tight">수제공정</span>
+      </a>
+
+      <!-- Tab 3: Subscription Plans (Center Highlight Button) -->
+      <a href="#plans" class="flex flex-col items-center justify-center -translate-y-2 group">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-terracotta to-terracottaDark text-white flex items-center justify-center shadow-lg group-active:scale-95 transition-transform border-4 border-[#FAF7F2]">
+          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.65-.5-.65C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z"/></svg>
+        </div>
+        <span class="text-[10px] font-black text-terracotta tracking-tight mt-0.5">구독플랜</span>
+      </a>
+
+      <!-- Tab 4: Blog Magazine -->
+      <a href="#blog" class="flex flex-col items-center justify-center text-charcoal/70 hover:text-terracotta active:text-terracotta transition-colors py-1">
+        <svg class="w-5 h-5 fill-none stroke-current stroke-2 mb-0.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        <span class="text-[10px] font-bold tracking-tight">매거진</span>
+      </a>
+
+      <!-- Tab 5: Saved / MY -->
+      <button id="bottomSavedBtn" type="button" class="relative flex flex-col items-center justify-center text-charcoal/70 hover:text-terracotta active:text-terracotta transition-colors py-1">
+        <div class="relative">
+          <svg class="w-5 h-5 fill-none stroke-current stroke-2 mb-0.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          <span id="bottomSavedCount" class="absolute -top-1.5 -right-2 w-4 h-4 rounded-full bg-terracotta text-white text-[9px] font-black flex items-center justify-center">0</span>
+        </div>
+        <span class="text-[10px] font-bold tracking-tight">관심목록</span>
+      </button>
+    </div>
+  </nav>
+
 </body>
 </html>
