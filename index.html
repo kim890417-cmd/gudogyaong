@@ -134,6 +134,23 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #C85A28;
     }
+
+    @media (max-width: 767px) {
+      body.mobile-pages main > section.mobile-page-hidden, body.mobile-pages footer.mobile-page-hidden { display: none !important; }
+      body.mobile-pages #breedGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+      body.mobile-pages #breedGrid .relative.h-44 { height: 8rem; }
+      body.mobile-pages #breedGrid .relative.h-44 img { object-fit: contain; }
+      body.mobile-pages .breed-card-content { padding: 0.75rem; gap: 0.6rem; }
+      body.mobile-pages .breed-card-content > div:first-child > p,
+      body.mobile-pages .breed-card-content > div:first-child > div:not(:first-child),
+      body.mobile-pages .breed-card-content > div:first-child > div:first-child > span,
+      body.mobile-pages .breed-card-actions .breed-to-sub { display: none; }
+      body.mobile-pages .breed-card-content h3 { font-size: 0.9rem; line-height: 1.3; }
+      body.mobile-pages .breed-card-actions { padding-top: 0; }
+      body.mobile-pages #mobileBottomNav [aria-current="page"] { color: #c85a28; }
+      body.mobile-pages #mobileBottomNav { padding-bottom: env(safe-area-inset-bottom); }
+      body.mobile-pages { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom)); }
+    }
   </style>
 </head>
 <body class="antialiased selection:bg-terracotta/20 selection:text-charcoal flex flex-col min-h-screen pb-16 md:pb-0">
@@ -405,17 +422,17 @@
           <!-- <iframe class="w-full h-full" src="https://www.youtube.com/embed/동영상ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
           <!-- ======================================================== -->
           <div class="text-center p-6 sm:p-8 space-y-4 z-10">
-            <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-full bg-gradient-to-tr from-terracotta to-terracottaDark text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform cursor-pointer ring-4 ring-terracotta/30">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-full bg-gradient-to-tr from-terracotta to-terracottaDark text-white flex items-center justify-center shadow-xl ring-4 ring-terracotta/30">
               <svg class="w-8 h-8 sm:w-10 sm:h-10 fill-current translate-x-0.5" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
               </svg>
             </div>
             <div>
-              <p class="text-2xl sm:text-3xl font-black text-white tracking-tight">진혁님이 넣을 영상</p>
-              <p class="text-xs sm:text-sm text-stone-400 mt-1.5 font-medium">유튜브 링크(iframe) 또는 MP4 동영상 파일을 이곳에 삽입하여 교체하실 수 있습니다.</p>
+              <p class="text-2xl sm:text-3xl font-black text-white tracking-tight">조리 영상 준비 중</p>
+              <p class="text-xs sm:text-sm text-stone-400 mt-1.5 font-medium">영상이 준비되면 이곳에서 만나보실 수 있어요.</p>
             </div>
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-stone-800/90 border border-stone-700 text-xs text-amber-300 font-semibold shadow-inner">
-              <span>🎬 영상 공간 준비 완료 (추후 유튜브 URL 또는 비디오 태그로 교체)</span>
+              <span>🎬 영상 준비 중</span>
             </div>
           </div>
           <!-- Background Styling -->
@@ -687,6 +704,7 @@
         </div>
       </div>
 
+      <details class="mt-8 text-xs text-stone-400"><summary class="cursor-pointer">사진 출처 및 이용 조건</summary><div id="photoCredits" class="mt-3 space-y-2"></div></details>
       <div class="mt-12 pt-6 border-t border-stone-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-stone-500">
         <p>&copy; 2026 구독야옹 (9dogyaong). All rights reserved.</p>
         <p>Designed with love for all cats and butlers.</p>
@@ -1612,7 +1630,7 @@ const breedCatalog = [
         name: '코리안숏헤어',
         coat: '단모',
         size: '중형묘 (3.5 ~ 5.5kg)',
-        img: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/cat-korean-shorthair.jpg',
         personality: '호기심이 왕성하고 영리하며 활동적임. 친화력이 좋고 적응력이 뛰어남.',
         healthCare: ['음수량 부족으로 인한 하부비뇨기 질환(방광염/결석)', '실내 생활로 인한 복부 비만', '환절기 헤어볼 구토'],
         goodFoods: ['동결건조 생연어 다이스', '무항생제 닭안심 수분 퓨레', '국내산 단호박 식이섬유'],
@@ -1625,7 +1643,7 @@ const breedCatalog = [
         name: '러시안블루',
         coat: '단모 (이중모)',
         size: '중형묘 (3.0 ~ 4.8kg)',
-        img: 'https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/cat-russian-blue.jpg',
         personality: '온순하고 조용하며 집사에게 깊은 애정을 보임. 낯선 사람에게는 수줍음.',
         healthCare: ['스트레스성 비뇨기 결석 (환경 변화에 민감)', '활동량 저하 시 비만 위험', '치석 및 잇몸 염증'],
         goodFoods: ['저염 가다랑어포 플레이크', '수분 듬뿍 치킨 테린', '초유 타우린 트릿'],
@@ -1638,7 +1656,7 @@ const breedCatalog = [
         name: '브리티시숏헤어',
         coat: '단모 (조밀한 털)',
         size: '중대형묘 (4.0 ~ 7.0kg)',
-        img: 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/cat-british-shorthair.jpg',
         personality: '느긋하고 참을성이 강함. 안기는 것보다 곁에 머무는 것을 좋아하는 신사.',
         healthCare: ['비대성 심근병증(HCM) 유전 질환', '체중 과다로 인한 관절·척추 부담', '치주염'],
         goodFoods: ['고단백 저지방 칠면조 큐브', '오메가3 생연어 필렛', '유산균 덴탈 스틱'],
@@ -1651,7 +1669,7 @@ const breedCatalog = [
         name: '스코티시폴드',
         coat: '단모/중모',
         size: '중형묘 (3.0 ~ 5.0kg)',
-        img: 'https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/cat-scottish-fold.jpg',
         personality: '상냥하고 조용하며 사람을 잘 따름. 특유의 편안한 앉은 자세를 자주 취함.',
         healthCare: ['골연골 이형성증(관절 연골 기형 및 만성 관절염)', '접힌 귀 외이도염', '다낭포 신장질환(PKD)'],
         goodFoods: ['초록입홍합 관절 파우더', '연어 오메가3 트릿', '저인(Low-P) 수분 화식'],
@@ -1664,7 +1682,7 @@ const breedCatalog = [
         name: '페르시안',
         coat: '장모 (풍성한 이중모)',
         size: '중대형묘 (3.5 ~ 6.0kg)',
-        img: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/cat-persian.jpg',
         personality: '매우 얌전하고 우아하며 차분함. 시끄럽거나 복잡한 환경을 싫어함.',
         healthCare: ['장모 그루밍으로 인한 심한 헤어볼 뭉침 및 장폐색', '다낭포 신장질환(PKD)', '단두종 눈물 착색'],
         goodFoods: ['유기농 귀리 캣그라스', '단호박 식이섬유 퓨레', '저인(Low-P) 닭안심 테린'],
@@ -1677,7 +1695,7 @@ const breedCatalog = [
         name: '랙돌',
         coat: '장모 (비단결 같은 털)',
         size: '대형묘 (4.5 ~ 8.5kg)',
-        img: 'https://images.unsplash.com/photo-1513360010508-32c1807ed935?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/cat-ragdoll.jpg',
         personality: '안아 올리면 인형처럼 몸을 맡기는 순둥이. 공격성이 없고 집사 사랑이 지극함.',
         healthCare: ['대형묘 슬개골 및 고관절 이형성증', '비대성 심근병증(HCM)', '털 엉킴 및 헤어볼'],
         goodFoods: ['초록입홍합 & 생연어 듀오', '소화 효소 유산균 토퍼', '수분 듬뿍 테린'],
@@ -1690,7 +1708,7 @@ const breedCatalog = [
         name: '아메리칸숏헤어',
         coat: '단모 (단단한 털)',
         size: '중대형묘 (4.0 ~ 6.5kg)',
-        img: 'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/cat-american-shorthair.jpg',
         personality: '쾌활하고 장난기가 넘치며 건강미 넘침. 독립적이면서도 가족에게 살가움.',
         healthCare: ['식탐 과다로 인한 비만 및 당뇨', '심장 HCM 정기 검진', '관절 건강'],
         goodFoods: ['무염 닭가슴살 져키', '동결건조 북어 트릿', '단호박 오트밀 쿠키'],
@@ -1703,7 +1721,7 @@ const breedCatalog = [
         name: '먼치킨',
         coat: '단모/장모 다양',
         size: '소형/중형묘 (2.5 ~ 4.0kg)',
-        img: 'https://images.unsplash.com/photo-1561948955-570b270e7c36?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/cat-munchkin.jpg',
         personality: '짧은 다리에도 달리기와 점프를 즐기는 에너자이저. 호기심과 애교가 넘침.',
         healthCare: ['짧은 다리로 인한 척추 질환(척추 전만증)', '관절염', '체중 증가 시 척추 마비 위험'],
         goodFoods: ['항염 오메가3 연어 큐브', '초록입홍합 분말', '저칼로리 닭안심 수분팩'],
@@ -1716,7 +1734,7 @@ const breedCatalog = [
         name: '샴 (샤미즈)',
         coat: '단모 (몸에 밀착)',
         size: '중형묘 (3.0 ~ 4.5kg)',
-        img: 'https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/cat-siamese.jpg',
         personality: '말이 아주 많고 똑똑함. 집사 껌딱지로 혼자 있는 것을 극도로 싫어함.',
         healthCare: ['유전성 간/신장 아밀로이드증', '천식 및 기관지 질환', '치은염'],
         goodFoods: ['동결건조 메추리 & 오리안심', '타우린 보충 트릿', '생연어 큐브'],
@@ -1729,7 +1747,7 @@ const breedCatalog = [
         name: '노르웨이숲',
         coat: '장모 (방수 이중모)',
         size: '대형묘 (5.0 ~ 9.0kg)',
-        img: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/cat-norwegian-forest.jpg',
         personality: '야성미 넘치는 외모와 달리 지극히 온순하고 영리함. 높은 캣타워를 사랑함.',
         healthCare: ['심장 비대증(HCM)', '대형묘 고관절 이형성증', '장모 헤어볼'],
         goodFoods: ['한우 홍두깨살 육포', '노르웨이 생연어 필렛', '캣그라스 식이섬유'],
@@ -1742,7 +1760,7 @@ const breedCatalog = [
         name: '뱅갈',
         coat: '단모 (표범 무늬)',
         size: '중대형묘 (4.0 ~ 7.0kg)',
-        img: 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/cat-bengal.jpg',
         personality: '압도적인 운동량과 사냥 본능. 물을 좋아하고 산책을 즐기기도 함.',
         healthCare: ['진행성 망막 위축증(PRA)', '슬개골 탈구', '과민성 장 증후군 (소화 민감)'],
         goodFoods: ['무염 닭가슴살 큐브', '생연어 다이스', '장 건강 생유산균 토퍼'],
@@ -1755,7 +1773,7 @@ const breedCatalog = [
         name: '터키시앙고라',
         coat: '중장모 (비단결)',
         size: '중형묘 (3.0 ~ 5.0kg)',
-        img: 'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/cat-turkish-angora.jpg',
         personality: '우아하고 영리하며 충성심이 강함. 물놀이와 집사와의 교감을 즐김.',
         healthCare: ['백색 털/파란 눈 개체의 선천성 난청', '신장 및 요로결석', '헤어볼 구토'],
         goodFoods: ['수분 파우치 치킨 테린', '단호박 식이섬유 스틱', '연어 오메가3'],
@@ -1770,7 +1788,7 @@ const breedCatalog = [
         name: '말티즈',
         coat: '장모 (하얗고 부드러움)',
         size: '소형견 (2.0 ~ 3.5kg)',
-        img: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/dog-maltese.jpg',
         personality: '애교가 많고 활발하며 주인에 대한 애착이 큼. 똑똑하고 당찬 성격.',
         healthCare: ['슬개골 탈구 1~4기 (소형견 다발)', '붉은 눈물 자국(포르피린)', '노령기 심장병(이첨판 폐쇄부전)'],
         goodFoods: ['초록입홍합 관절 파우더', '저알레르기 오리안심 육포', '단호박 비스킷'],
@@ -1783,7 +1801,7 @@ const breedCatalog = [
         name: '푸들 (토이/미니어처)',
         coat: '곱슬모 (털 빠짐 적음)',
         size: '소형/중형견 (3.0 ~ 6.0kg)',
-        img: 'https://images.unsplash.com/photo-1546527868-ccb7ee7dfa6a?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/dog-poodle.jpg',
         personality: '지능 순위 2위의 천재견. 훈련 습득이 빠르고 가족과 깊은 정서적 교감.',
         healthCare: ['슬개골 탈구 및 고관절', '귓속 털로 인한 귓병·외이도염', '호르몬 질환(쿠싱)'],
         goodFoods: ['생연어 큐브', '오리안심 스틱', '유산균 덴탈 츄'],
@@ -1796,7 +1814,7 @@ const breedCatalog = [
         name: '포메라니안',
         coat: '풍성한 이중모',
         size: '소형견 (1.8 ~ 3.2kg)',
-        img: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/dog-pomeranian.jpg',
         personality: '당차고 호기심이 많으며 자신감이 넘침. 경계심이 있어 헛짖음 교육 필요.',
         healthCare: ['슬개골 탈구 및 뼈 골절 (다리뼈가 매우 얇음)', '기관지 협착증(거위 소리 기침)', '탈모증(알로페시아)'],
         goodFoods: ['오메가3 연어 트릿', '콜라겐 북어 큐브', '기관지 완화 배·단호박 퓨레'],
@@ -1809,7 +1827,7 @@ const breedCatalog = [
         name: '비숑프리제',
         coat: '곱슬모 (헬멧 볼륨)',
         size: '소형/중형견 (4.5 ~ 7.5kg)',
-        img: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/dog-bichon-frise.jpg',
         personality: '명랑하고 에너지가 넘치며 독립적. 누구에게나 친절하고 다정함.',
         healthCare: ['식이 알레르기로 인한 아토피성 피부염', '백내장 및 안구 질환', '슬개골 탈구'],
         goodFoods: ['가수분해 연어 트릿', '칠면조 테린', '초록입홍합 관절 간식'],
@@ -1822,7 +1840,7 @@ const breedCatalog = [
         name: '시츄',
         coat: '장모 (이중모)',
         size: '소형견 (4.5 ~ 8.0kg)',
-        img: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/dog-shih-tzu.jpg',
         personality: '낙천적이고 온순하며 공격성이 거의 없음. 은근한 고집쟁이.',
         healthCare: ['단두종 호흡기 증후군', '돌출된 눈 각막염 및 건성 각결막염', '신장 결석 및 비만'],
         goodFoods: ['블루베리 항산화 파우더', '소화가 편한 단호박 닭가슴살', '북어 스틱'],
@@ -1835,7 +1853,7 @@ const breedCatalog = [
         name: '웰시코기',
         coat: '단모~중모 (털 빠짐 극심)',
         size: '중형견 (10.0 ~ 14.0kg)',
-        img: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/dog-welsh-corgi.jpg',
         personality: '자신감이 넘치고 총명하며 활달함. 목양견 출신으로 몰이 본능이 강함.',
         healthCare: ['긴 허리와 짧은 다리로 인한 추간판 탈구증(디스크 IVDD)', '비만 시 디스크 파열 급증', '고관절'],
         goodFoods: ['초록입홍합 & 상어연골 분말', '저지방 캥거루·칠면조 큐브', '당근 칩'],
@@ -1848,7 +1866,7 @@ const breedCatalog = [
         name: '골든리트리버',
         coat: '풍성한 방수 이중모',
         size: '대형견 (25.0 ~ 36.0kg)',
-        img: 'https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/dog-golden-retriever.jpg',
         personality: '천사견이라 불릴 만큼 다정하고 사람을 극진히 사랑함. 에너지가 넘침.',
         healthCare: ['고관절 및 주관절 이형성증 (대형견 만성 질환)', '암(혈관육종 등) 발병률 유의', '습진성 피부염'],
         goodFoods: ['한우 홍두깨살 대용량 육포', '생연어 관절 큐브', '오리목뼈 저온 건조'],
@@ -1861,7 +1879,7 @@ const breedCatalog = [
         name: '진돗개',
         coat: '이중모 (단모~중모)',
         size: '중대형견 (15.0 ~ 23.0kg)',
-        img: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/dog-jindo.jpg',
         personality: '주인에 대한 충성심과 복종심이 절대적. 귀소본능이 뛰어나고 청결함.',
         healthCare: ['실외 배변 고집으로 인한 소변 참기 및 방광 질환', '피부 농피증', '소화기 건강'],
         goodFoods: ['국내산 무항생제 닭가슴살 져키', '동결건조 북어채', '단호박 오트밀 쿠키'],
@@ -1874,7 +1892,7 @@ const breedCatalog = [
         name: '치와와 (단모/장모)',
         coat: '단모/장모',
         size: '초소형견 (1.5 ~ 3.0kg)',
-        img: 'https://images.unsplash.com/photo-1546527868-ccb7ee7dfa6a?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/dog-chihuahua.jpg',
         personality: '작은 체구에 비해 기개가 넘치고 용맹함. 주인에 대한 독점욕이 강함.',
         healthCare: ['머리 천문(몰레라) 미폐쇄 충격 주의', '슬개골 탈구 및 저혈당 쇼크', '심장 승모판 질환'],
         goodFoods: ['한입 크기 닭안심 큐브', '오메가3 연어 파우더 토퍼', '황태 보양 퓨레'],
@@ -1887,7 +1905,7 @@ const breedCatalog = [
         name: '닥스훈트',
         coat: '단모/장모/와이어헤어',
         size: '소형견 (4.0 ~ 5.5kg)',
-        img: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&auto=format&fit=crop',
+        img: './assets/images/breeds/dog-dachshund.jpg',
         personality: '명랑하고 장난기가 넘치며 사냥개 출신으로 후각과 집념이 대단함.',
         healthCare: ['추간판 탈구증(허리 디스크) 발병률 1위 품종', '비만 시 디스크 파열 급증', '치주염'],
         goodFoods: ['상어연골 관절 덴탈 스틱', '저지방 오리안심 육포', '단호박 말랭이'],
@@ -1895,6 +1913,22 @@ const breedCatalog = [
         caution: '높은 곳에서 뛰어내리는 습관과 과식은 디스크 마비를 부르므로 엄격 통제'
       }
     ];
+
+    const breedPhotoCredits = {"cat-korean-shorthair": {"author": "Sadopaul", "source": "https://commons.wikimedia.org/wiki/File:Korean_shorthair_at_Yongmun.jpg", "license": "CC BY 4.0", "licenseUrl": "https://creativecommons.org/licenses/by/4.0"}, "cat-russian-blue": {"author": "Anna Utekhina http://kidsphoto.ru/", "source": "https://commons.wikimedia.org/wiki/File:Russian_blue_kitten_(cropped).jpg", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"}, "cat-british-shorthair": {"author": "BritishEmpire", "source": "https://commons.wikimedia.org/wiki/File:Mystica_from_British_Empire_Cattery.jpg", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"}, "cat-scottish-fold": {"author": "Heikki Siltala", "source": "https://commons.wikimedia.org/wiki/File:Scottish_Fold_-_CFF_cat_show_Heinola_2008-05-03_IMG_7882.JPG", "license": "CC BY 3.0", "licenseUrl": "https://creativecommons.org/licenses/by/3.0"}, "cat-persian": {"author": "The original uploader was Lajoma at Finnish Wikipedia.", "source": "https://commons.wikimedia.org/wiki/File:Persialainen.jpg", "license": "CC BY-SA 3.0", "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"}, "cat-ragdoll": {"author": "Simone Johnsson", "source": "https://commons.wikimedia.org/wiki/File:Ragdoll_from_Gatil_Ragbelas.jpg", "license": "CC BY-SA 2.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"}, "cat-american-shorthair": {"author": "odin_aka_zero-one", "source": "https://commons.wikimedia.org/wiki/File:Jewelkatz_Romeo_Of_Stalker-Bars.jpg", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"}, "cat-munchkin": {"author": "Sg0668commons", "source": "https://commons.wikimedia.org/wiki/File:Longhairedmunchkin.jpg", "license": "CC BY 3.0", "licenseUrl": "https://creativecommons.org/licenses/by/3.0"}, "cat-siamese": {"author": "Meekahoo", "source": "https://commons.wikimedia.org/wiki/File:Siamese_cat_Vaillante.JPG", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"}, "cat-norwegian-forest": {"author": "Gangburgondes", "source": "https://commons.wikimedia.org/wiki/File:Dalaja-Doll-norv%C3%A9gien-ambre-blotched-tabby_avec-blanc_2008_(cropped).jpg", "license": "CC BY-SA 3.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"}, "cat-bengal": {"author": "User:Lightburst", "source": "https://commons.wikimedia.org/wiki/File:Paintedcats_Red_Star_standing.jpg", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"}, "cat-turkish-angora": {"author": "Ankarakediler", "source": "https://commons.wikimedia.org/wiki/File:Turkish_Angora_in_Ankara_Zoo_(AO%C3%87).JPG", "license": "CC BY 3.0", "licenseUrl": "https://creativecommons.org/licenses/by/3.0"}, "dog-maltese": {"author": "Sannse", "source": "https://commons.wikimedia.org/wiki/File:Maltese_600.jpg", "license": "CC BY-SA 3.0", "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"}, "dog-poodle": {"author": "Tim Wilson from Blaine, MN, USA", "source": "https://commons.wikimedia.org/wiki/File:Full_attention_(8067543690).jpg", "license": "CC BY 2.0", "licenseUrl": "https://creativecommons.org/licenses/by/2.0"}, "dog-pomeranian": {"author": "Blackoranges", "source": "https://commons.wikimedia.org/wiki/File:Pomeranian.JPG", "license": "Public domain", "licenseUrl": ""}, "dog-bichon-frise": {"author": "Heike Andres", "source": "https://commons.wikimedia.org/wiki/File:Bichon_Fris%C3%A9_-_studdogbichon.jpg", "license": "CC BY-SA 3.0 de", "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en"}, "dog-shih-tzu": {"author": "Canino21", "source": "https://commons.wikimedia.org/wiki/File:Shihtzu_(cropped).jpg", "license": "Public domain", "licenseUrl": ""}, "dog-welsh-corgi": {"author": "Dog breed facts", "source": "https://commons.wikimedia.org/wiki/File:Welsh_Pembroke_Corgi.jpg", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"}, "dog-golden-retriever": {"author": "Dukedestiny01.jpg: \"Janneke Vreugdenhil\"\nderivative work: Anka Friedrich ([[User talk:Ankaaswe\nTrix Friedrich|talk]])", "source": "https://commons.wikimedia.org/wiki/File:Golden_Retriever_Dukedestiny01_drvd.jpg", "license": "Public domain", "licenseUrl": ""}, "dog-jindo": {"author": "Herocosmos", "source": "https://commons.wikimedia.org/wiki/File:ARIRANG.jpg", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"}, "dog-chihuahua": {"author": "Bonnie van den Born, http://www.bonfoto.nl. The original uploader was Cwazi at Dutch Wikipedia.", "source": "https://commons.wikimedia.org/wiki/File:Chihuahua1_bvdb.jpg", "license": "CC BY-SA 3.0", "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"}, "dog-dachshund": {"author": "Katemil94", "source": "https://commons.wikimedia.org/wiki/File:%EB%8B%A5%EC%8A%A4%ED%9B%88%ED%8A%B8(%EB%8B%A8%EB%AA%A8%EC%A2%85)_(Dachshund_(Short)).jpg", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"}};
+
+    const creditsContainer = document.getElementById('photoCredits');
+    breedCatalog.forEach(breed => {
+      const credit = breedPhotoCredits[breed.id];
+      const row = document.createElement('p');
+      const source = document.createElement('a');
+      source.href = credit.source; source.target = '_blank'; source.rel = 'noopener noreferrer';
+      source.textContent = `${breed.name}: ${credit.author}`;
+      const license = document.createElement('a');
+      license.href = credit.licenseUrl || credit.source; license.target = '_blank'; license.rel = 'noopener noreferrer';
+      license.textContent = credit.license;
+      row.append(source, ' · ', license, ' · 크기 조정');
+      creditsContainer.appendChild(row);
+    });
 
     // Breed Encyclopedia State & Functions
     let currentBreedType = 'all'; // 'all' | 'cat' | 'dog'
@@ -1954,7 +1988,7 @@ const breedCatalog = [
               </div>
             </div>
 
-            <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-4 breed-card-content">
               <div>
                 <div class="flex items-center justify-between">
                   <h3 class="text-lg font-black text-charcoal">${b.name}</h3>
@@ -1980,7 +2014,7 @@ const breedCatalog = [
               </div>
 
               <!-- Buttons -->
-              <div class="pt-2 flex gap-2">
+              <div class="pt-2 flex gap-2 breed-card-actions">
                 <button type="button" class="open-breed-detail flex-1 py-2.5 px-3 rounded-xl bg-sand hover:bg-stone-200 text-charcoal font-bold text-xs transition" data-breed-id="${b.id}">
                   상세 백과 & 급여법 📖
                 </button>
@@ -2192,6 +2226,55 @@ const breedCatalog = [
       </button>
     </div>
   </nav>
+
+  <script>
+    // Mobile uses one section at a time; desktop retains the full landing page.
+    (() => {
+      const main = document.getElementById('top');
+      const sections = Array.from(main.children).filter(el => el.tagName === 'SECTION');
+      const footer = document.querySelector('body > footer');
+      const nav = document.getElementById('mobileBottomNav');
+      const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
+      document.body.classList.add('mobile-pages');
+      function showPage(hash, scroll) {
+        const id = decodeURIComponent((hash || '#top').slice(1));
+        const target = document.getElementById(id);
+        const section = id === 'top' ? sections[0] : (target && (target.closest('main > section') || (target.tagName === 'SECTION' ? target : null)));
+        if (!section || !sections.includes(section)) return;
+        const homeGroup = [sections[0], document.getElementById('process'), document.getElementById('video')];
+        const isHome = homeGroup.includes(section);
+        sections.forEach(el => el.classList.toggle('mobile-page-hidden', isHome ? !homeGroup.includes(el) : el !== section));
+        if (footer) footer.classList.toggle('mobile-page-hidden', id !== 'faq');
+        nav.querySelectorAll('a').forEach(a => {
+          const selected = a.getAttribute('href') === (isHome ? '#top' : '#' + section.id);
+          if (selected) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+        });
+        if (scroll && isMobile()) {
+          if (id === 'process' || id === 'video') section.scrollIntoView({behavior: 'auto', block: 'start'});
+          else window.scrollTo({top: 0, behavior: 'auto'});
+        }
+      }
+      document.addEventListener('click', event => {
+        const link = event.target.closest('a[href^="#"]');
+        if (!link || !isMobile()) return;
+        const hash = link.getAttribute('href');
+        if (hash.length < 2) return;
+        showPage(hash, true);
+      });
+      window.addEventListener('hashchange', () => showPage(location.hash, true));
+      showPage(location.hash, false);
+      if (isMobile() && (location.hash === '#process' || location.hash === '#video')) {
+        requestAnimationFrame(() => showPage(location.hash, true));
+      }
+      const savedBtn = document.getElementById('bottomSavedBtn');
+      const savedCount = document.getElementById('savedCount');
+      const bottomCount = document.getElementById('bottomSavedCount');
+      savedBtn.addEventListener('click', () => document.getElementById('openSavedBtn').click());
+      const syncCount = () => { bottomCount.textContent = savedCount.textContent; };
+      new MutationObserver(syncCount).observe(savedCount, {childList: true, characterData: true, subtree: true});
+      syncCount();
+    })();
+  </script>
 
 </body>
 </html>
