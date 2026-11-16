@@ -277,7 +277,7 @@
         <!-- Hero Image Card -->
         <div class="lg:col-span-6">
           <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-stone-200/90 bg-white group">
-            <img src="./assets/images/hero-kitchen.jpg" alt="수제간식을 기다리는 고양이와 강아지" class="w-full h-auto object-cover aspect-video group-hover:scale-102 transition-transform duration-500" loading="eager" />
+            <img src="./assets/images/hero-kitchen.jpg" alt="수제간식을 기다리는 고양이와 강아지" class="w-full h-auto object-contain aspect-video bg-sand" loading="eager" />
             <div class="p-4 sm:p-5 bg-white/95 backdrop-blur flex items-center justify-between gap-4 border-t border-stone-100">
               <div>
                 <div class="flex items-center gap-1.5">
@@ -339,7 +339,7 @@
         <!-- Ingredients Image -->
         <div class="lg:col-span-5">
           <div class="rounded-3xl overflow-hidden border border-stone-200 shadow-lg bg-white">
-            <img src="./assets/images/process-ingredients.jpg" alt="신선한 연어, 닭안심, 단호박, 당근 등 수제간식 생원물" class="w-full h-auto object-cover aspect-[4/3]" loading="lazy" />
+            <img src="./assets/images/process-ingredients.jpg" alt="신선한 연어, 닭안심, 단호박, 당근 등 수제간식 생원물" class="w-full h-auto object-contain aspect-[4/3] bg-sand" loading="lazy" />
             <div class="p-5">
               <div class="flex items-center justify-between text-xs font-bold text-muted">
                 <span>주방 위생 · 원물 신선도 점검</span>
@@ -477,7 +477,7 @@
 
         <!-- Custom Box Preview Banner -->
         <div class="mt-10 bg-white rounded-3xl p-6 sm:p-8 border border-stone-200 shadow-md flex flex-col sm:flex-row items-center gap-6">
-          <img src="./assets/images/box-preview.jpg" alt="친환경 크라프트 맞춤 구독 박스 구성" class="w-full sm:w-56 rounded-2xl object-cover aspect-[4/3] shadow-sm" loading="lazy" />
+          <img src="./assets/images/box-preview.jpg" alt="친환경 크라프트 맞춤 구독 박스 구성" class="w-full sm:w-56 rounded-2xl object-contain bg-sand aspect-[4/3] shadow-sm" loading="lazy" />
           <div class="flex-1 space-y-2 text-center sm:text-left">
             <span class="inline-block px-3 py-1 rounded-full bg-forestLight text-forest text-xs font-black">집사 취향 & 냥이 건강 1:1 커스텀</span>
             <h3 class="font-extrabold text-lg sm:text-xl text-charcoal">아이의 품종과 건강 고민에 맞춰 더 넣고 싶은 재료를 자유롭게 적어주세요</h3>
@@ -798,7 +798,7 @@
     <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl border border-stone-200 space-y-5 animate-in fade-in zoom-in duration-200">
       <div class="flex items-start justify-between gap-4">
         <div class="flex items-center gap-4">
-          <img id="breedModalImg" src="" alt="" class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border-2 border-stone-200 shadow-sm" />
+          <img id="breedModalImg" src="" alt="" class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-contain bg-sand border-2 border-stone-200 shadow-sm" />
           <div>
             <div class="flex items-center gap-2">
               <span id="breedModalBadge" class="inline-block px-2.5 py-0.5 rounded-full text-xs font-black bg-terracottaLight text-terracottaDark">고양이</span>
@@ -1978,7 +1978,7 @@ const breedCatalog = [
         return `
           <div class="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col group">
             <div class="relative h-44 sm:h-48 overflow-hidden bg-sand">
-              <img src="${b.img}" alt="${b.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />
+              <img src="${b.img}" alt="${b.name}" class="w-full h-full object-contain bg-sand" loading="lazy" />
               <div class="absolute top-3 left-3 flex items-center gap-1.5">
                 ${typeBadge}
                 <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/90 backdrop-blur-sm text-charcoal border border-stone-200/60">${b.coat}</span>
