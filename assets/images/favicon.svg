@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E06D3B"/>
+      <stop offset="100%" stop-color="#C85A28"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="28" fill="url(#grad)"/>
+  <!-- Cat Ears -->
+  <polygon points="26,42 34,18 52,36" fill="#FAF7F2"/>
+  <polygon points="31,39 37,23 48,36" fill="#F4A261"/>
+  <polygon points="74,42 66,18 48,36" fill="#FAF7F2"/>
+  <polygon points="69,39 63,23 52,36" fill="#F4A261"/>
+  <!-- Cat Head -->
+  <circle cx="50" cy="56" r="30" fill="#FAF7F2"/>
+  <!-- Eyes -->
+  <ellipse cx="38" cy="54" rx="4.5" ry="5.5" fill="#23201D"/>
+  <circle cx="39.5" cy="52.5" r="1.5" fill="#FFFFFF"/>
+  <ellipse cx="62" cy="54" rx="4.5" ry="5.5" fill="#23201D"/>
+  <circle cx="63.5" cy="52.5" r="1.5" fill="#FFFFFF"/>
+  <!-- Heart Nose -->
+  <path d="M47.5,63 C46,61 44,61 44,63 C44,65 50,69 50,69 C50,69 56,65 56,63 C56,61 54,61 52.5,63 Z" fill="#E06D3B"/>
+  <!-- Mouth -->
+  <path d="M46,67 Q50,71 50,69 Q50,71 54,67" stroke="#23201D" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Whiskers -->
+  <line x1="22" y1="58" x2="33" y2="60" stroke="#C85A28" stroke-width="2" stroke-linecap="round"/>
+  <line x1="20" y1="65" x2="32" y2="64" stroke="#C85A28" stroke-width="2" stroke-linecap="round"/>
+  <line x1="78" y1="58" x2="67" y2="60" stroke="#C85A28" stroke-width="2" stroke-linecap="round"/>
+  <line x1="80" y1="65" x2="68" y2="64" stroke="#C85A28" stroke-width="2" stroke-linecap="round"/>
+  <!-- Cheeks -->
+  <ellipse cx="32" cy="62" rx="4" ry="2" fill="#F8C8B5"/>
+  <ellipse cx="68" cy="62" rx="4" ry="2" fill="#F8C8B5"/>
+</svg>

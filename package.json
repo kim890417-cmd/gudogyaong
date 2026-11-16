@@ -1,0 +1,17 @@
+{
+  "name": "gudokyaong",
+  "version": "1.0.0",
+  "description": "구독야옹 - 고양이 프리미엄 수제간식 정기구독 홈페이지 (Cloudflare Pages 호환)",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx wrangler pages dev .",
+    "deploy": "npx wrangler pages deploy . --project-name=gudokyaong"
+  },
+  "keywords": [
+    "cloudflare-pages",
+    "cat-subscription",
+    "gudokyaong"
+  ],
+  "author": "Gudok Yaong Team",
+  "license": "MIT"
+}

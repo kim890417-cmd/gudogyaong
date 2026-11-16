@@ -1,0 +1,6 @@
+name = "gudokyaong"
+compatibility_date = "2026-11-16"
+
+[pages]
+# Directory containing static assets to deploy
+directory = "."
